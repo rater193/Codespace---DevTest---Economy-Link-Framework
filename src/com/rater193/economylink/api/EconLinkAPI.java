@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EconLinkAPI {
-    private Map<String, Float> economy = new HashMap<String, Float>();
+    private final Map<String, Float> economy = new HashMap<>();
 
     public EconLinkAPI() { }
 
@@ -55,5 +55,9 @@ public class EconLinkAPI {
 
     public void Load(String filepath) {
 
+    }
+
+    public Map<String, Float> getEconomy() {
+        return economy;
     }
 }
