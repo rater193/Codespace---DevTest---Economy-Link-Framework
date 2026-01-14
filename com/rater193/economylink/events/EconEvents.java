@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EconEvents {
     private static EconEvents SINGLETON;
-    private Map<EconEventList, ArrayList<Runnable>> registeredEvents = new HashMap<>();
+    private final Map<EconEventList, ArrayList<Runnable>> registeredEvents = new HashMap<>();
 
     public EconEvents() {
         SINGLETON = this;
