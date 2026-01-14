@@ -5,9 +5,7 @@ import com.rater193.economylink.events.EconEventList;
 import com.rater193.economylink.events.EconEvents;
 
 public class EconLink {
-    public void EconLink() {}
-
-    public void Init() {
+    public static void Init() {
         EconEvents events = new EconEvents();
         events.CreateEvent(EconEventList.OnWalletCreate);
         events.CreateEvent(EconEventList.OnWalletDelete);

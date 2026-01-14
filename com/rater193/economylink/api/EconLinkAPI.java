@@ -12,7 +12,7 @@ public class EconLinkAPI {
     public EconLinkAPI() { }
 
     public void AddWallet(String walletName) {
-        if(GetWallet(walletName) == null) {
+        if(GetWallet(walletName) != null) {
             return;
         }
         EconEvents.Get().InvokeEvent(EconEventList.OnWalletCreate);
