@@ -1,0 +1,6 @@
+
+public class EconLinkHysentials extends EconLink {
+    public EconLinkHysentials() {
+        super();
+    }
+}
