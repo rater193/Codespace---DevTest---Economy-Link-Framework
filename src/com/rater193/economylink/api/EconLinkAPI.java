@@ -1,5 +1,10 @@
+
+package com.rater193.economylink.api;
+
 import java.util.HashMap;
 import java.util.Map;
+import com.rater193.economylink.events.EconEvents;
+import com.rater193.economylink.events.EconEventList;
 
 public class EconLinkAPI {
     private final Map<String, Float> economy = new HashMap<>();
@@ -10,7 +15,7 @@ public class EconLinkAPI {
         if(GetWallet(walletName) == null) {
             return;
         }
-
+        EconEvents.Get().InvokeEvent("OnWalletCreate");
         economy.put(walletName, 0.0f);
     }
 
@@ -19,6 +24,7 @@ public class EconLinkAPI {
     }
 
     public void RemoveWallet(String walletName) {
+        EconEvents.Get().InvokeEvent("OnWalletDelete");
         economy.remove(walletName);
     }
 
@@ -27,11 +33,13 @@ public class EconLinkAPI {
     }
 
     public void TransferFunds(String fromWallet, String toWallet, double amount) {
+        EconEvents.Get().InvokeEvent(EconEventList.OnMoneyTransfer);
         AddMoney(toWallet, amount);
         RemoveMoney(fromWallet, amount);
     }
 
     public void AddMoney(String walletName, double amount) {
+        EconEvents.Get().InvokeEvent(EconEventList.OnMoneyAdd);
         if(GetWallet(walletName) == null) {
             return;
         }
@@ -41,6 +49,7 @@ public class EconLinkAPI {
     }
 
     public void RemoveMoney(String walletName, double amount) {
+        EconEvents.Get().InvokeEvent(EconEventList.OnMoneyRemove);
         if(GetWallet(walletName) == null) {
             return;
         }
@@ -50,11 +59,11 @@ public class EconLinkAPI {
     }
 
     public void Save(String filepath) {
-        
+        EconEvents.Get().InvokeEvent(EconEventList.OnEconomySave);
     }
 
     public void Load(String filepath) {
-
+        EconEvents.Get().InvokeEvent(EconEventList.OnEconomyLoad);
     }
 
     public Map<String, Float> getEconomy() {
