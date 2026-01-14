@@ -1,0 +1,8 @@
+
+package com.rater193.economylink.hooks;
+
+public class EconLinkHooksHysentials extends EconLinkHooks {
+    public EconLinkHooksHysentials() {
+        super();
+    }
+}
